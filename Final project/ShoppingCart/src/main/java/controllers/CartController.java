@@ -13,8 +13,7 @@ public class CartController {
 	
 	private CartServices cartservices;
 	private CustomerConnected customerconnected;
-	//private Product product;
-	//private ProductPack productpack;
+	
 		
 	
 	// get shopping cart
@@ -36,14 +35,9 @@ public class CartController {
 	// add product to shopping cart
 	@RequestMapping(value = "/add-product", method = RequestMethod.POST)
 	public @ResponseBody Cart addProduct(@RequestParam("idProduct") long idProduct, @RequestParam("quantity") int quantity) {
-		//ProductPack productpack = new ProductPack(quantity, product);
+		
 		return cartservices.addProduct(idProduct, quantity, customerconnected.getCustomer());
 	}
 	
-	
-	// save cart (set Cart)
-		@RequestMapping(value = "/save", method = RequestMethod.POST)
-		public @ResponseBody Payment saveCart() {
-			return cartservices.saveCart(customerconnected.getCustomer());
-		}
+
 }
